@@ -27,7 +27,7 @@ jobs:
 
     # Step 3: Set up SFTP to upload files
     - name: Upload files to server using SFTP
-      uses: SamKirkland/FTP-Deploy-Action@4.1
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         ftp-server: ${{ secrets.SFTP_HOST }}  # Store the SFTP server address in GitHub Secrets
         ftp-username: ${{ secrets.SFTP_USER }}  # Store the SFTP username in GitHub Secrets
