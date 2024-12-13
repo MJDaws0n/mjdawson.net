@@ -32,5 +32,5 @@ jobs:
         server: ${{ secrets.SFTP_HOST }}  # Store the SFTP server address in GitHub Secrets
         username: ${{ secrets.SFTP_USER }}  # Store the SFTP username in GitHub Secrets
         password: ${{ secrets.SFTP_PASSWORD }}  # Store the SFTP password in GitHub Secrets
-        server-dir: /webroot  # Path on the server to upload files
+        server-dir: /webroot/  # Path on the server to upload files
         port: 2022  # Default SFTP port (adjust if necessary)
