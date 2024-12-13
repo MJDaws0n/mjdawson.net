@@ -27,10 +27,10 @@ jobs:
 
     # Step 3: Set up SFTP to upload files
     - name: Upload files to server using SFTP
-      uses: burnett01/ftp-deploy-action@v1
+      uses: SamKirkland/FTP-Deploy-Action@4.1
       with:
-        host: ${{ secrets.SFTP_HOST }}  # Store the SFTP server address in GitHub Secrets
-        username: ${{ secrets.SFTP_USER }}  # Store the SFTP username in GitHub Secrets
-        password: ${{ secrets.SFTP_PASSWORD }}  # Store the SFTP password in GitHub Secrets
+        ftp-server: ${{ secrets.SFTP_HOST }}  # Store the SFTP server address in GitHub Secrets
+        ftp-username: ${{ secrets.SFTP_USER }}  # Store the SFTP username in GitHub Secrets
+        ftp-password: ${{ secrets.SFTP_PASSWORD }}  # Store the SFTP password in GitHub Secrets
         local-dir: ./build  # Path to the local files you want to upload
-        remote-dir: /webroot  # Path on the server to upload files
+        remote-dir: /path/to/remote/directory  # Path on the server to upload files
