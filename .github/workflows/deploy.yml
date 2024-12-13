@@ -7,18 +7,23 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest: Checkout code
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout code
+    - name: Checkout code
       uses: actions/checkout@v3
 
-    # Step 2: Set up the API request (for example, triggering deployment via an API)
- #   - name: Call API to trigger deployment
- #     env:
-  #      API_KEY: ${{ secrets.API_KEY }}  # Store your API key in GitHub Secrets
- #     run: |
-   #     curl -X POST \
-   #       -H "Authorization: Bearer $API_KEY" \
-   #       -d '{"action": "deploy"}' \
-   #       https://your-api-endpoint.com/deploy
+    # Step 2: (Optional) Set up the API request to trigger deployment via an API
+    # If you're not using an API step, you can comment or remove this.
+    # - name: Call API to trigger deployment
+    #   env:
+    #     API_KEY: ${{ secrets.API_KEY }}  # Store your API key in GitHub Secrets
+    #   run: |
+    #     curl -X POST \
+    #       -H "Authorization: Bearer $API_KEY" \
+    #       -d '{"action": "deploy"}' \
+    #       https://your-api-endpoint.com/deploy
 
     # Step 3: Set up SFTP to upload files
     - name: Upload files to server using SFTP
@@ -28,4 +33,4 @@ jobs:
         username: ${{ secrets.SFTP_USER }}  # Store the SFTP username in GitHub Secrets
         password: ${{ secrets.SFTP_PASSWORD }}  # Store the SFTP password in GitHub Secrets
         local-dir: ./build  # Path to the local files you want to upload
-        remote-dir: /path/to/remote/directory  # Path on the server to upload files
+        remote-dir: /webroot  # Path on the server to upload files
