@@ -29,8 +29,9 @@ jobs:
     - name: Upload files to server using SFTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
-        ftp-server: ${{ secrets.SFTP_HOST }}  # Store the SFTP server address in GitHub Secrets
-        ftp-username: ${{ secrets.SFTP_USER }}  # Store the SFTP username in GitHub Secrets
-        ftp-password: ${{ secrets.SFTP_PASSWORD }}  # Store the SFTP password in GitHub Secrets
+        server: ${{ secrets.SFTP_HOST }}  # Store the SFTP server address in GitHub Secrets
+        username: ${{ secrets.SFTP_USER }}  # Store the SFTP username in GitHub Secrets
+        password: ${{ secrets.SFTP_PASSWORD }}  # Store the SFTP password in GitHub Secrets
         local-dir: ./build  # Path to the local files you want to upload
-        remote-dir: /path/to/remote/directory  # Path on the server to upload files
+        server-dir: /webroot  # Path on the server to upload files
+        port: 2022  # Default SFTP port (adjust if necessary)
