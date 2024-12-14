@@ -16,6 +16,6 @@ jobs:
           port: 2022
           user: ${{ secrets.SFTP_USER }}
           pass: ${{ secrets.SFTP_PASSWORD }}
-          localDir: build-output
+          localDir: '/github/workspace/'
           remoteDir: '/webroot'
           reverse: true
