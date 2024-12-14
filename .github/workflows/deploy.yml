@@ -9,12 +9,18 @@ jobs:
   upload:
     runs-on: ubuntu-latest
     steps:
-      - name: Upload via SCP
+      # Step 1: Check out your repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Upload files via SFTP
+      - name: Deploy to SFTP
         uses: appleboy/scp-action@v0.1.6
         with:
           host: ${{ secrets.SFTP_HOST }}
-          port: 2022
+          port: 2022 # Replace with your SFTP server port
           username: ${{ secrets.SFTP_USER }}
           password: ${{ secrets.SFTP_PASSWORD }}
-          source: './'
-          target: '/webroot'
+          source: './' # The directory you want to upload
+          target: '/webroot' # Remote directory where files should go
+          strip_components: 1 # Removes the root folder from upload path
