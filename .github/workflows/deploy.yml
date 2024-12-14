@@ -6,9 +6,11 @@ on:
       - main
 
 jobs:
-  - upload:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
       - name: Upload new build to server
-        uses: Atyn/Simple-SFTP
+        uses: Atyn/Simple-SFTP@v1
         with:
           url: sftp://${{ secrets.SFTP_USER }}:${{ secrets.SFTP_PASSWORD }}@${{ secrets.SFTP_HOST }}:2022/webroot
           local-directory: build-output
