@@ -9,8 +9,13 @@ jobs:
   upload:
     runs-on: ubuntu-latest
     steps:
-      - name: Upload new build to server
-        uses: Atyn/simple-sftp-action@0.0.2
+      - name: deploy
+        uses: pressidium/lftp-mirror-action@v1
         with:
-          url: sftp://${{ secrets.SFTP_USER }}:${{ secrets.SFTP_PASSWORD }}@${{ secrets.SFTP_HOST }}:2022/webroot
-          local-directory: build-output
+          host: ${{ secrets.SFTP_HOST }}
+          port: 2022
+          user: ${{ secrets.SFTP_USER }}
+          pass: ${{ secrets.SFTP_PASSWORD }}
+          localDir: build-output
+          remoteDir: '/webroot'
+          reverse: true
