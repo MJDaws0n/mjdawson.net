@@ -1,0 +1,17 @@
+{
+    "name": "mjdawson/website",
+    "description": "My website",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Mjdawson\\Website\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "MJDawson",
+            "email": "max@mjdawson.net"
+        }
+    ],
+    "require": {}
+}
