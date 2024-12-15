@@ -1,5 +1,15 @@
 <?php
 require_once dirname(__FILE__).'/../../vendor/autoload.php';
+
+function getPathSegments() {
+    return array_filter(explode('/', trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/')));
+}
+
+if(getPathSegments()[0] == 'chat'){
+    echo "<p id='text'>Redirecting to unique generated chat url..</p>";
+    echo '<script>window.location.href = "https://chat-v1.mjdawson.net";</script>';
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
