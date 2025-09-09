@@ -46,6 +46,8 @@ if (!empty($segments) && strtolower($segments[0]) === 'chat') {
     <link rel="stylesheet" href="/assets/styles.css" />
     <link rel="icon" href="https://avatars.githubusercontent.com/u/66313685" />
 
+    <script src="/assets/autogate/verification.js"></script>
+    <link rel="stylesheet" href="/assets/autogate/dark.css">
     <script>
       // Early theme boot to avoid FOUC
       (function() {
@@ -213,7 +215,7 @@ if (!empty($segments) && strtolower($segments[0]) === 'chat') {
                     <li>Email: <a class="inline-link" href="mailto:contact@mjdawson.net">contact@mjdawson.net</a></li>
                 </ul>
             </div>
-            <form class="contact-form" action="mailto:contact@mjdawson.net" method="post" enctype="text/plain">
+            <form id="contact-form" class="contact-form" method="post">
                 <label>
                     <span>Name</span>
                     <input type="text" name="name" placeholder="Your name" required />
@@ -226,7 +228,9 @@ if (!empty($segments) && strtolower($segments[0]) === 'chat') {
                     <span>Message</span>
                     <textarea name="message" rows="5" placeholder="What can I help with?" required></textarea>
                 </label>
-                <button type="submit" class="btn primary full">Send</button>
+                <div id="ww-autogate"></div>
+                <button id="contact-submit" type="submit" class="btn primary full">Send</button>
+                <div id="contact-status" class="form-note" role="status" aria-live="polite"></div>
                 <p class="form-note">Or email <a class="inline-link" href="mailto:contact@mjdawson.net">contact@mjdawson.net</a> directly.</p>
             </form>
         </div>
