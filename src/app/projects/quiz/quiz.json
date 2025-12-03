@@ -1,0 +1,105 @@
+{
+  "title": "CPU Components Quiz - OCR A-Level Computer Science",
+  "questions": [
+    {
+      "question": "Which component of the CPU is responsible for carrying out arithmetic and logical operations?",
+      "options": [
+        "Control Unit (CU)",
+        "Arithmetic Logic Unit (ALU)",
+        "Registers",
+        "Cache"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What does the Control Unit (CU) do in the CPU?",
+      "options": [
+        "Executes mathematical calculations",
+        "Fetches, decodes, and manages execution of instructions",
+        "Stores intermediate data",
+        "Caches instructions for quick access"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which part of the CPU stores data temporarily while instructions are being processed?",
+      "options": [
+        "Control Unit (CU)",
+        "Registers",
+        "Cache",
+        "Data Bus"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "What is the purpose of the CPU Cache?",
+      "options": [
+        "To store permanent data",
+        "To speed up access to frequently used data",
+        "To regulate the speed of CPU operations",
+        "To connect CPU to other hardware"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which bus transports data between the CPU and other devices/components?",
+      "options": [
+        "Address Bus",
+        "Control Bus",
+        "Data Bus",
+        "Memory Bus"
+      ],
+      "answer": 2
+    },
+    {
+      "question": "What does the Program Counter (PC) register do?",
+      "options": [
+        "Stores the result of calculations",
+        "Keeps track of the next instruction address",
+        "Controls the data flow in the CPU",
+        "Holds the current instruction"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which register temporarily holds data fetched from memory?",
+      "options": [
+        "Memory Data Register (MDR)",
+        "Accumulator",
+        "Memory Address Register (MAR)",
+        "Program Counter (PC)"
+      ],
+      "answer": 0
+    },
+    {
+      "question": "What role does the Accumulator have in the CPU?",
+      "options": [
+        "Stores current instruction",
+        "Holds results of arithmetic and logic operations",
+        "Saves address of next instruction",
+        "Manages control signals"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "Which register contains the address in memory for the next instruction to be fetched?",
+      "options": [
+        "Memory Data Register (MDR)",
+        "Memory Address Register (MAR)",
+        "Accumulator",
+        "Control Unit (CU)"
+      ],
+      "answer": 1
+    },
+    {
+      "question": "The Fetch-Decode-Execute cycle is managed primarily by which CPU component?",
+      "options": [
+        "Arithmetic Logic Unit (ALU)",
+        "Registers",
+        "Control Unit (CU)",
+        "Cache"
+      ],
+      "answer": 2
+    }
+  ]
+}
