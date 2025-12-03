@@ -99,7 +99,7 @@ if (!empty($segments) && strtolower($segments[0]) === 'chat') {
     <section class="hero">
         <div class="container hero-inner">
             <div class="hero-copy">
-                <h1>Hi, I’m Max — <span class="accent">MJDawson</span></h1>
+                <h1>Hi, I'm Max — <span class="accent">MJDawson</span></h1>
                 <p class="lead">UK-based developer building fast, user-friendly tools and apps. I turn complex problems into simple, scalable solutions.</p>
                 <div class="cta-row">
                     <a class="btn primary" href="#projects">See Projects</a>

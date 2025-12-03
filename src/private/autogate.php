@@ -430,8 +430,8 @@ class AutoGate{
     private function generateType(){
         $options = [
             'photo_1',
-            'photo_2',
-            'word_1'
+            // 'photo_2',
+            // 'word_1'
         ];
         
         // Select a random option
