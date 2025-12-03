@@ -1,2 +1,2 @@
 # mjdawson.net
-My Personal Website hauga
+My Personal Website
