@@ -134,3 +134,62 @@ if (contactForm) {
 		}
 	});
 }
+
+// Project Slider Logic
+const sliders = document.querySelectorAll('[data-slider]');
+
+sliders.forEach(slider => {
+    const track = slider.querySelector('.slider-track');
+    if (!track) return;
+    
+    const slides = Array.from(track.children);
+    const nextBtn = slider.querySelector('.next');
+    const prevBtn = slider.querySelector('.prev');
+    const dotsContainer = slider.querySelector('.slider-dots');
+    
+    if (slides.length === 0) return;
+
+    let currentIndex = 0;
+
+    // Create dots
+    if (dotsContainer) {
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+    }
+
+    const dots = dotsContainer ? Array.from(dotsContainer.children) : [];
+
+    function updateDots(index) {
+        dots.forEach(dot => dot.classList.remove('active'));
+        if (dots[index]) dots[index].classList.add('active');
+    }
+
+    function goToSlide(index) {
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+        
+        currentIndex = index;
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        updateDots(currentIndex);
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+    }
+    
+    // Hide nav if only 1 slide
+    if (slides.length <= 1) {
+        if (nextBtn) nextBtn.style.display = 'none';
+        if (prevBtn) prevBtn.style.display = 'none';
+        if (dotsContainer) dotsContainer.style.display = 'none';
+    }
+});
