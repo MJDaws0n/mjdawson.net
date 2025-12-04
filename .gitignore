@@ -1,3 +1,4 @@
 /vendor/
 src/private/.autogate_env
 src/private/.mail_env
+.env

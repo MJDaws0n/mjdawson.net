@@ -43,96 +43,12 @@ if (navToggle && nav) {
 	});
 }
 
-// Contact form + Autogate integration
-// Only render/show Autogate when Send is pressed.
+// Contact form
 if (contactForm) {
-	let isSubmitting = false;
-
-	function setStatus(msg, type = 'info') {
-		if (!contactStatus) return;
-		contactStatus.textContent = msg;
-		contactStatus.dataset.type = type;
-	}
-
-	async function sendForm(sessionToken) {
-		// Build FormData
-		const fd = new FormData(contactForm);
-		if (sessionToken) fd.set('autogate', sessionToken);
-
-		try {
-			const resp = await fetch('/contact.php', {
-				method: 'POST',
-				body: fd,
-				headers: { 'Accept': 'application/json' }
-			});
-
-			// Try JSON first, fallback to text
-			let ok = resp.ok;
-			let payload;
-			try {
-				payload = await resp.clone().json(); // clone allows another read
-			} catch (_) {
-				try {
-					payload = await resp.text();
-				} catch (e) {
-					payload = null;
-				}
-			}
-
-			if (ok) {
-				setStatus('Thanks — your message was sent. I\'ll get back to you soon.', 'success');
-				document.querySelector('.ww-autogate-enable-container').remove();
-				document.querySelector('#ww-autogate').style.display = '';
-				contactForm.reset();
-			} else {
-				setStatus('Sorry, something went wrong sending your message. Please try again.', 'error');
-			}
-		} catch (err) {
-			setStatus('Network error. Check your connection and try again.' + err, 'error');
-		} finally {
-			if (contactSubmit) {
-				contactSubmit.disabled = false;
-				contactSubmit.textContent = 'Send';
-			}
-			// Allow future submissions after this attempt finishes
-			isSubmitting = false;
-		}
-	}
-
-	contactForm.addEventListener('submit', (e) => {
-		e.preventDefault();
-		if (isSubmitting) return;
-		isSubmitting = true;
-		// Disable button to prevent double submits
-		if (contactSubmit) {
-			contactSubmit.disabled = true;
-			contactSubmit.textContent = 'Verifying…';
-		}
-		setStatus('Starting human verification…', 'info');
-
-		try {
-			// Instantiate Autogate now so it only shows when the user submits.
-			const autogate = new WebWorksAutoGate('#ww-autogate', '/contact.php');
-			// Define nicer callbacks immediately
-			autogate.robot = () => {
-				// Soft notice; Autogate will retry automatically
-				setStatus('Verifying you\'re human…', 'info');
-			};
-			autogate.human = (session) => {
-				// Verified: send the form
-				setStatus('Verified — sending your message…', 'info');
-				if (contactSubmit) contactSubmit.textContent = 'Sending…';
-				sendForm(session);
-			};
-		} catch (err) {
-			setStatus('Unable to start verification. Please refresh and try again.', 'error');
-			if (contactSubmit) {
-				contactSubmit.disabled = false;
-				contactSubmit.textContent = 'Send';
-			}
-			isSubmitting = false;
-		}
-	});
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert("Please contact via email, form isn't working at the moment.");
+    });
 }
 
 // Project Slider Logic
