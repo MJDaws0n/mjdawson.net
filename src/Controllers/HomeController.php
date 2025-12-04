@@ -82,7 +82,7 @@ class HomeController
         <div class="container hero-inner">
             <div class="hero-copy">
                 <h1>Hi, I'm Max — <span class="accent">MJDawson</span></h1>
-                <p class="lead">UK-based developer building fast, user-friendly tools and apps. I turn complex problems into simple, scalable solutions.</p>
+                <p class="lead">Building fast, user-friendly tools and apps. Turning complex problems into simple, scalable solutions.</p>
                 <div class="cta-row">
                     <a class="btn primary" href="#projects">See Projects</a>
                     <a class="btn ghost" href="#contact">Contact Me</a>
@@ -104,8 +104,8 @@ class HomeController
         <div class="container two-col">
             <div>
                 <h2>About Me</h2>
-                <p>I'm Max, known online as <strong>MJDawson</strong>. I'm a UK-based developer currently in y12. I enjoy building reliable, performance-focused software with clean UX, and I'm currently developing <a class="inline-link" href="https://portfolify.online" target="_blank" rel="noopener">Portfolify</a>, a modern portfolio builder app.</p>
-                <p>Outside of coding, I spend time training and competing in competitives swimming events, and I love learning about backend systems, developer tooling, and security. My goal is to create experiences that are fast, intuitive, and maintainable..</p>
+                <p>I'm Max, known online as <strong>MJDawson</strong>. I'm a currently in y12. I enjoy building reliable, performance-focused software with clean UX.</p>
+                <p>Outside of coding, I spend time swimming training competing at swimming events.</p>
             </div>
         </div>
     </section>
@@ -141,10 +141,10 @@ class HomeController
                     </div>
                 </article>
                 <article class="card">
-                    <h3>AutoGate</h3>
-                    <p>AutoGate is a secure verification toolset for modern web applications. It helps manage user authentication, permissions, and access control with a focus on reliability and easy integration. AutoGate is designed to protect sensitive resources and streamline verification workflows, making it a flexible solution for projects that require robust security.</p>
+                    <h3>Kernova</h3>
+                    <p>Kernova is a high-fidelity sandbox designed for malware analysis and security research. It mirrors a realistic host environment to prevent evasion while providing deep observability into file system, registry, and network activities. Built with C and Assembly for performance and stealth. It's intended to be used for my A-Level computer science final project.</p>
                     <div class="card-actions">
-                        <a class="btn small" href="#contact">Contact for details</a>
+                        <a class="btn small" href="/projects/kernova">View more</a>
                     </div>
                 </article>
                 <article class="card">
@@ -155,6 +155,7 @@ class HomeController
                     </div>
                 </article>
             </div>
+            <a class="btn primary" href="/projects" style="display:block;margin:32px auto 0 auto;text-align:center;max-width:220px;">View More Projects</a>
         </div>
     </section>
 
