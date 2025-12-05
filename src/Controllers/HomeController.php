@@ -211,6 +211,8 @@ class HomeController
                     <span>Message</span>
                     <textarea name="message" rows="5" placeholder="What can I help with?" required></textarea>
                 </label>
+                <script src="https://autogate.mjdawson.net/lib/autogate.js"></script>
+                <div id="captcha"></div>
                 <button id="contact-submit" type="submit" class="btn primary full">Send</button>
                 <div id="contact-status" class="form-note" role="status" aria-live="polite"></div>
                 <p class="form-note">Or email <a class="inline-link" href="mailto:contact@mjdawson.net">contact@mjdawson.net</a> directly.</p>

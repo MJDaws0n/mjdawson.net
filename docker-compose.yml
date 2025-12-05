@@ -10,6 +10,7 @@ services:
       - DB_NAME=${DB_NAME}
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
+      - AUTOGATE_PRIVATE_KEY=${AUTOGATE_PRIVATE_KEY}
     depends_on:
       - db
     networks:

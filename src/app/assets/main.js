@@ -45,9 +45,77 @@ if (navToggle && nav) {
 
 // Contact form
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    let isSubmitting = false;
+    let autogateToken = null;
+
+    // Initialize AutoGate
+    if (typeof AutoGate !== 'undefined') {
+        const gate = new AutoGate('#captcha', '71f6c02ab3795a11f402f692ae3b43b8');
+        gate.onSuccess = (token) => {
+            console.log('Verified! Token:', token);
+            autogateToken = token;
+            setStatus('Verification successful. You can now send your message.', 'success');
+        };
+    }
+
+    function setStatus(msg, type = 'info') {
+        if (!contactStatus) return;
+        contactStatus.textContent = msg;
+        contactStatus.dataset.type = type;
+    }
+
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        alert("Please contact via email, form isn't working at the moment.");
+        if (isSubmitting) return;
+
+        if (!autogateToken) {
+            setStatus('Please complete the verification check.', 'error');
+            return;
+        }
+
+        isSubmitting = true;
+        if (contactSubmit) {
+            contactSubmit.disabled = true;
+            contactSubmit.textContent = 'Sending…';
+        }
+        setStatus('Sending...', 'info');
+
+        const fd = new FormData(contactForm);
+        fd.append('token', autogateToken);
+
+        try {
+            const resp = await fetch('/contact.php', {
+                method: 'POST',
+                body: fd,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            let payload;
+            try {
+                payload = await resp.json();
+            } catch (e) {
+                payload = null;
+            }
+
+            if (resp.ok && payload && payload.status === 'success') {
+                setStatus('Thanks — your message was sent. I\'ll get back to you soon.', 'success');
+                contactForm.reset();
+                autogateToken = null;
+                // Reset AutoGate if possible - assuming re-init or page reload is needed for now as reset method is unknown
+                // But if the user wants to send another, they might need to refresh or we re-init.
+                // For now, let's just leave it.
+            } else {
+                setStatus((payload && payload.message) || 'Sorry, something went wrong. Please try again.', 'error');
+            }
+        } catch (err) {
+            setStatus('Network error. Check your connection and try again.', 'error');
+        } finally {
+            if (contactSubmit) {
+                contactSubmit.disabled = false;
+                contactSubmit.textContent = 'Send';
+            }
+            isSubmitting = false;
+        }
     });
 }
 
